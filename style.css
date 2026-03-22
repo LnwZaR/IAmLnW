@@ -1,173 +1,735 @@
+/* ========== GLOBAL STYLES ========== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ตัวแปร CSS สำหรับสีและขนาด (ง่ายต่อการแก้ไข) */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #00d4ff;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    --bg-light: #f7fafc;
+    --bg-white: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+}
+
 body {
-    font-family: 'Prompt', sans-serif;
-    background: radial-gradient(circle at top, #2a1a3f, #0f0c1a);
-    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
 }
 
-/* 🌌 ดาว */
-body::after {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(white 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.2;
-    z-index: -1;
-}
-
-/* container */
+/* Container - ใช้จัดการขนาดเนื้อหา */
 .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* 🔥 PROFILE CARD */
-.profile-card {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(15px);
-    padding: 20px;
-    border-radius: 20px;
-
-    transition: 0.3s;
-}
-
-.profile-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(168,85,247,0.4);
-}
-
-/* รูปโปร */
-.profile {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #a855f7;
-}
-
-/* text */
-.content h1 {
-    color: #c084fc;
-    font-size: 22px;
-}
-
-.content h2 {
-    font-weight: 300;
-    margin-bottom: 10px;
-}
-
-.content p {
-    font-size: 14px;
-    color: #ddd;
-}
-
-/* ปุ่ม */
-.btn {
-    margin-top: 10px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: none;
-    background: linear-gradient(45deg, #a855f7, #7c3aed);
-    color: white;
-    cursor: pointer;
-}
-
-.btn:hover {
-    box-shadow: 0 0 15px #a855f7;
-}
-
-/* extra */
-.extra {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.4s;
-}
-
-.extra.show {
-    max-height: 200px;
-    opacity: 1;
-    margin-top: 10px;
-}
-
-/* 📸 GALLERY */
-.gallery-title {
-    text-align: center;
-    margin-top: 70px;
-    font-size: 26px;
-}
-
-/* grid */
-.gallery {
-    max-width: 1100px;
-    margin: 20px auto;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
 }
 
-/* การ์ดรูป */
-.gallery-card {
+/* ========== NAVBAR ========== */
+
+.navbar {
+    background: var(--bg-white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* โลโก้ */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+/* เมนู Navigation */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
     position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    cursor: pointer;
-    width: 300px;
-    height: 400px;
 }
 
-
-/* รูป */
-.gallery-card img {
-    width: 100%;
-    aspect-ratio: 3/4; /* 🔥 สำคัญ ทำให้รูปเท่ากันหมด */
-    object-fit: cover;
-    transition: 0.5s;
+.nav-link:hover {
+    color: var(--primary-color);
 }
 
-/* overlay */
-.gallery-info {
+/* เส้นใต้สำหรับ hover effect */
+.nav-link::after {
+    content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
     width: 100%;
-    padding: 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    transform: translateY(100%);
-    transition: 0.4s;
 }
 
-/* hover */
-.gallery-card:hover img {
-    transform: scale(1.1);
-    filter: brightness(0.7);
+/* Hamburger Menu (สำหรับมือถือ) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
 }
 
-.gallery-card:hover .gallery-info {
-    transform: translateY(0);
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    transition: var(--transition);
+    border-radius: 3px;
 }
 
-/* 📱 responsive */
-@media(max-width: 600px) {
-    .profile-card {
-        flex-direction: column;
-        text-align: center;
+/* ========== HERO SECTION ========== */
+
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 100px 20px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;
+    animation: fadeInLeft 0.8s ease;
+}
+
+.hero-title {
+    font-size: 48px;
+    margin-bottom: 10px;
+    animation: slideDown 0.8s ease;
+}
+
+.hero-subtitle {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.hero-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+/* ปุ่มใน Hero */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: var(--text-dark);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Avatar */
+.hero-image {
+    flex: 1;
+    animation: fadeInRight 0.8s ease;
+}
+
+.avatar {
+    font-size: 200px;
+    text-align: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ========== ANIMATION KEYFRAMES ========== */
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== SECTION STYLES ========== */
+
+section {
+    padding: 80px 20px;
+}
+
+.section-title {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* เส้นใต้ชื่อส่วน */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* ========== ABOUT SECTION ========== */
+
+.about {
+    background: var(--bg-white);
+}
+
+.about-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.about-text strong {
+    color: var(--primary-color);
+}
+
+/* List ความสนใจ */
+.interests-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.interests-list li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.interests-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    transition: var(--transition);
+    animation: fadeInUp 0.8s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow);
+}
+
+.about-emoji {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+/* ========== SKILLS SECTION ========== */
+
+.skills {
+    background: var(--bg-light);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.skill-card {
+    background: var(--bg-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: fadeInUp 0.8s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.skill-icon {
+    font-size: 32px;
+}
+
+.skill-header h3 {
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+.skill-level {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 10px;
+    transition: width 1s ease;
+}
+
+/* ========== PROJECTS SECTION ========== */
+
+.projects {
+    background: var(--bg-white);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--bg-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: fadeInUp 0.8s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25);
+}
+
+.project-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-emoji {
+    font-size: 48px;
+}
+
+.project-content {
+    padding: 30px;
+}
+
+.project-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.project-content p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Tag (เท็ก) */
+.project-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--accent-color);
+    color: var(--text-dark);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.project-link:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+/* ========== CONTACT SECTION ========== */
+
+.contact {
+    background: var(--bg-light);
+}
+
+.contact-intro {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-light);
+    margin-bottom: 50px;
+    line-height: 1.8;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.contact-card {
+    background: var(--bg-white);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: fadeInUp 0.8s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.25);
+}
+
+.contact-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.contact-card p {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+/* ========== FOOTER ========== */
+
+.footer {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* สำหรับแท็บเล็ต (เล็กกว่า 768px) */
+@media (max-width: 768px) {
+    /* Navbar */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg-white);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: var(--shadow);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-link {
+        display: block;
+        padding: 20px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 60px 20px;
+        min-height: auto;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 24px;
+    }
+
+    .avatar {
+        font-size: 120px;
+    }
+
+    /* Section Title */
+    .section-title {
+        font-size: 30px;
+    }
+
+    /* About */
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Projects */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact */
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* สำหรับโทรศัพท์มือถือ (เล็กกว่า 480px) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    section {
+        padding: 50px 20px;
+    }
+
+    .skill-card,
+    .project-card,
+    .contact-card {
+        animation: none;
+    }
+}
+
+/* ========== SCROLL ANIMATION ========== */
+
+/* เอฟเฟกต์เมื่อ scroll มาถึงองค์ประกอบ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

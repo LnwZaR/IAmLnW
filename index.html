@@ -1,86 +1,258 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>Profile - เทพ</title>
-
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - นักเรียนโปรแกรมเมอร์</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span class="logo-text">MyPortfolio</span>
+            </div>
+            
+            <!-- ปุ่ม Menu สำหรับมือถือ -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-<div class="container">
+            <!-- เมนู Navigation -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">หน้าแรก</a></li>
+                <li><a href="#about" class="nav-link">เกี่ยวกับตัว</a></li>
+                <li><a href="#skills" class="nav-link">ทักษะ</a></li>
+                <li><a href="#projects" class="nav-link">ผลงาน</a></li>
+                <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- 👤 โปรไฟล์ -->
-    <div class="profile-card">
-        <img src="kuy.jpg" class="profile">
-
-        <div class="content">
-            <h1>พรหมเทพ เกตุแสนสี</h1>
-            <h2>ชื่อเล่น: เทพ</h2>
-
-            <p>🎓 โรงเรียน: พยัคฆภูมิวิทยาคาร</p>
-            <p>🎂 อายุ: 15 ปี</p>
-            <p>✨ ชอบวาดรูป เล่นกีฬา และอยากเป็นโปรแกรมเมอร์</p>
-
-            <button onclick="toggleInfo(this)" class="btn">ดูเพิ่มเติม</button>
-
-            <div class="extra">
-                <p>💻 สนใจเขียนโปรแกรม</p>
-                <p>🎮 ชอบเล่นเกม</p>
-                <p>🚀 กำลังพัฒนาเว็บไซต์</p>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">สวัสดีครับ! 👋</h1>
+                <h2 class="hero-subtitle">ผมชื่อเทพ นักเรียนที่กำลังฝึกเขียนโค้ด</h2>
+                <p class="hero-description">
+                    เป็นนักเรียนชั้น ม.3 จากโรงเรียนพยัคฆภูมิวิทยาคาร ชอบเล่นกีฬา วาดรูป และสนใจพัฒนาทักษะด้านการเขียนโปรแกรม
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">ดูผลงาน</a>
+                    <a href="#contact" class="btn btn-secondary">ติดต่อฉัน</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="avatar">👨‍💻</div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 💪 ความถนัด -->
-    <div class="profile-card">
-        <img src="S__21659653.jpg" class="profile">
-
-        <div class="content">
-            <h1>ความถนัด</h1>
-            <p>เล่นเกม วาดรูป และเรียนรู้สิ่งใหม่ ๆ</p>
+    <!-- ========== ABOUT ME ========== -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">เกี่ยวกับตัวผม</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>สวัสดี!</strong> ผมชื่อเทพ ชื่อจริง พรหมเทพ เกตุแสนสี เป็นนักเรียนชั้น ม.3 จากโรงเรียนพยัคฆภูมิวิทยาคาร
+                    </p>
+                    <p>
+                        💪 ความสนใจหลักของผม:
+                    </p>
+                    <ul class="interests-list">
+                        <li>⚽ เล่นกีฬา - ชอบการเล่นและพัฒนาทักษะด้านกีฬาต่างๆ</li>
+                        <li>💻 เขียนโค้ด - เรียน HTML, CSS, JavaScript</li>
+                        <li>🎨 วาดรูป - ชอบสร้างสิ่งสวยงาม</li>
+                        <li>🎮 เล่นเกม - ชอบเกมที่สนุกและท้าทาย</li>
+                    </ul>
+                    <p>
+                        <strong>ความรักของตัว:</strong><br>
+                        🍜 ข้าวมันไก่ • กะเพรา • มาม่า • ยำ
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="about-card">
+                        <p class="about-emoji">⚽</p>
+                        <p>ชอบเล่นกีฬา</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 🍜 อาหาร -->
-    <div class="profile-card center">
-        <div class="content">
-            <h1>อาหารที่ชอบ</h1>
-            <p>ข้าวมันไก่ • กะเพรา • มาม่า • ยำ</p>
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">ทักษะของผม</h2>
+            
+            <div class="skills-grid">
+                <!-- HTML Skill -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🏗️</span>
+                        <h3>HTML</h3>
+                    </div>
+                    <p class="skill-level">เริ่มต้น 40%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+
+                <!-- CSS Skill -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🎨</span>
+                        <h3>CSS</h3>
+                    </div>
+                    <p class="skill-level">เริ่มต้น 45%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript Skill -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">⚡</span>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <p class="skill-level">เริ่มต้น 35%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%"></div>
+                    </div>
+                </div>
+
+                <!-- Git Skill -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">📦</span>
+                        <h3>Git & GitHub</h3>
+                    </div>
+                    <p class="skill-level">เริ่มต้น 50%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-</div>
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">ผลงานของผม</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-emoji">🌐</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Profile Page v1</h3>
+                        <p>เว็บแนะนำตัวแรก ทำด้วย HTML, CSS, JavaScript ที่มี Profile Cards และ Gallery</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <a href="#home" class="project-link">ดูเว็บ →</a>
+                    </div>
+                </div>
 
-<!-- 📸 GALLERY -->
-<h1 class="title">𝙈𝙀</h1>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-emoji">📱</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Portfolio Modern</h3>
+                        <p>เว็บแนะนำตัว ฉบับปรับปรุง ดีไซน์สมัยใหม่ Responsive Design สำหรับทุกอุปกรณ์</p>
+                        <div class="project-tags">
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Modern Design</span>
+                            <span class="tag">Mobile-Friendly</span>
+                        </div>
+                        <a href="#home" class="project-link">ดูเพิ่มเติม →</a>
+                    </div>
+                </div>
 
-<div class="gallery">
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-emoji">📸</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Gallery Page</h3>
+                        <p>หน้าแสดงรูปภาพของผม ทำด้วย Grid Layout และ Hover Effects ที่สวยงาม</p>
+                        <div class="project-tags">
+                            <span class="tag">Gallery</span>
+                            <span class="tag">CSS Grid</span>
+                            <span class="tag">Animation</span>
+                        </div>
+                        <a href="p1.html" class="project-link">ดูแกลเลอรี่ →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="gallery-card">
-        <img src="kuy.jpg">
-        <div class="overlay">รูปของฉัน 😎</div>
-    </div>
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">ติดต่อฉัน</h2>
+            
+            <div class="contact-content">
+                <p class="contact-intro">
+                    สนใจทำงานร่วมกันหรืออยากคุยเรื่องโปรแกรมเมอร์หรือกีฬา? 
+                    สามารถติดต่อผมได้ที่:
+                </p>
 
-    <div class="gallery-card">
-        <img src="S__21717003.jpg">
-        <div class="overlay">บรรยากาศ</div>
-    </div>
+                <div class="contact-methods">
+                    <a href="mailto:lnwzar@email.com" class="contact-card">
+                        <span class="contact-icon">📧</span>
+                        <h3>Email</h3>
+                        <p>lnwzar@email.com</p>
+                    </a>
 
-    <div class="gallery-card">
-        <img src="S__21716998.jpg">
-        <div class="overlay">ความทรงจำ</div>
-    </div>
+                    <a href="https://www.facebook.com/lnwzar" target="_blank" class="contact-card">
+                        <span class="contact-icon">👥</span>
+                        <h3>Facebook</h3>
+                        <p>LnwZaR</p>
+                    </a>
 
-    <div class="gallery-card">
-        <img src="S__21717000.jpg">
-        <div class="overlay">ช่วงเวลาชิลๆ</div>
-    </div>
+                    <a href="https://github.com/LnwZaR" target="_blank" class="contact-card">
+                        <span class="contact-icon">🐙</span>
+                        <h3>GitHub</h3>
+                        <p>github.com/LnwZaR</p>
+                    </a>
 
-</div>
+                    <a href="https://line.me/ti/p/lnwzar" target="_blank" class="contact-card">
+                        <span class="contact-icon">💬</span>
+                        <h3>Line</h3>
+                        <p>LnwZaR</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="script.js"></script>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 My Portfolio. สร้างด้วย ❤️ และ HTML, CSS, JavaScript</p>
+            <p>ติดตามการพัฒนาของผมต่อไปได้ที่ GitHub: <a href="https://github.com/LnwZaR" target="_blank">LnwZaR</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
