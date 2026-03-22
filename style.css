@@ -373,8 +373,8 @@ section {
 }
 
 .about-emoji {
-    font-size: 80px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 /* ========== SKILLS SECTION ========== */
@@ -732,4 +732,9 @@ section {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+.about-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
